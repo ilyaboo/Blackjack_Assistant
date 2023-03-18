@@ -19,3 +19,4 @@ Here are some user instructions for the Blackjack Assistant
 - Click QUIT to close the application
 
 ### Enjoy! :)
+![pic](https://user-images.githubusercontent.com/108785038/226074219-fb592596-ff36-4c67-a99a-8db76e2bd60b.jpg)
