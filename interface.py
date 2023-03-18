@@ -8,6 +8,7 @@ class Interface:
         self.root = Tk()
         self.hand = Hand()
 
+        # labels
         self.LabelEnteredCards = Label(self.root, text = "Your cards: ")
         self.LabelEnteredCards.grid(row = 2, column = 0)
 
@@ -20,14 +21,14 @@ class Interface:
         self.LabelChoiceCommentary = Label(self.root, text = "")
         self.LabelChoiceCommentary.grid(row = 7, column = 0)
 
-
-
+        # gaps
         self.LabelGap1 = Label(self.root, text = " ")
         self.LabelGap1.grid(row = 3, column = 0)
 
         self.LabelGap2 = Label(self.root, text = " ")
         self.LabelGap2.grid(row = 5, column = 0)
 
+        # buttons
         self.Button2 = Button(self.root, text = "2", padx = 30, pady = 30, command = lambda: self.click_card("2"))
         self.Button2.grid(row = 1, column = 1)
 
@@ -99,24 +100,28 @@ class Interface:
         success_probability = self.hand.calc_prob()   # probasbility of success when drawing
         tens = ["10", "J", "Q", "K"]   # list of cards of values 10 for detecting blackjack
 
+        # if the sum is greater thabn 21 it is a bust
         if cards_sum > 21:
             self.LabelChoice.config(text = "It's a bust")
             self.LabelChoiceCommentary.config(text = "better luck next time")
+        # if exactly 21, it is the best result
         elif cards_sum == 21:
             self.LabelChoice.config(text = "You have exactly 21")
             self.LabelChoiceCommentary.config(text = "Congratulations!")
+        # detecting blackjack
         elif len(cards) == 2 and \
             ((cards[0] == "A" and cards[1] in tens) or (cards[0] in tens and cards[1] == "A")):
             self.LabelChoice.config(text = "It's a BlackJack!")
             self.LabelChoiceCommentary.config(text = "Congratulations!")
+        # bust is more likely
         elif success_probability < 50:
             self.LabelChoice.config(text = "Best choice is STAND")
             self.LabelChoiceCommentary.config(text = str(round(100 - success_probability, 1)) + "% bust probability")
+        # bust is less likely
         else:
             self.LabelChoice.config(text = "Best choice is DRAW")
             self.LabelChoiceCommentary.config(text = str(round(100 - success_probability, 1)) + "% bust probability")
         return
-    
 
     def start(self):
         # method that launches the interface

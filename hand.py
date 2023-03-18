@@ -54,6 +54,3 @@ class Hand:
                 # card causes bust, so all cards of greater value will also do that
                 break
         return round(success, 2)
-    
-    
-
