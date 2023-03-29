@@ -4,7 +4,7 @@ from tkinter import *
 from hand import Hand
 
 class Interface:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = Tk()
         self.hand = Hand()
 
@@ -83,7 +83,7 @@ class Interface:
         self.LabelEnteredCards.config(text= "Your cards: " + " ".join(self.hand.get_cards()))
         return
     
-    def clickReset(self):
+    def clickReset(self) -> None:
         # method that resets the interface and hand
         self.hand.reset_hand()
         self.LabelEnteredCards.config(text = "Your cards: ")
@@ -123,7 +123,7 @@ class Interface:
             self.LabelChoiceCommentary.config(text = str(round(100 - success_probability, 1)) + "% bust probability")
         return
 
-    def start(self):
+    def start(self) -> None:
         # method that launches the interface
         self.root.mainloop()
         return
